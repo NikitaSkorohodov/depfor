@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container > ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .container > ul > li {
+      margin-bottom: 20px; /* Отступ между заказами */
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .container > ul > li > ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .container > ul > li > ul > li {
+      margin-bottom: 10px; /* Отступ между курсами в заказе */
+    }
+
+    .container > ul > li > p {
+      margin: 5px 0;
+    }
+
+    .container > ul > li > p:first-child {
+      font-weight: bold;
+      color: #555;
+    }
+
+    .container > ul > li > p:last-child {
+      color: #777;
+    }
+    
+    .no-orders {
+      color: #888;
+      font-size: 1.2em;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{title}}</h1>
+
+    {{#if orders.length}}
+      <ul>
+        {{#each orders}}
+          <li>
+            <p>Заказ создан: {{date}}</p>
+            <p>Итоговая цена: {{totalPrice}} руб.</p>
+            <p>Точка выдачи: {{deliveryPoint}}</p>
+            <ul>
+              {{#each courses}}
+                <li>
+                  <p>Курс: {{this.title}}</p>
+                  <p>Цена: {{this.price}} руб.</p>
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="no-orders">У вас пока нет заказов.</p>
+    {{/if}}
+  </div>
+
+</body>
+</html>

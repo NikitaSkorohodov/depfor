@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <style>
+    .course-item {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .course-title {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .course-description {
+      margin-bottom: 10px;
+    }
+    .course-image {
+      max-width: 200px;
+      margin-bottom: 10px;
+    }
+    .course-price {
+      font-weight: bold;
+      color: black;
+    }
+    .course-details {
+      margin-top: 10px;
+    }
+    .btn-details {
+      text-decoration: none;
+      color: #fff;
+      background-color: #26a69a;
+      text-align: center;
+      letter-spacing: .5px;
+      -webkit-transition: background-color .2s ease-out;
+      transition: background-color .2s ease-out;
+      cursor: pointer;
+      font-size: 14px; /* увеличен размер кнопки */
+      outline: 0;
+      padding: 10px 20px; /* увеличение размера кнопки */
+    }
+  </style>
+</head>
+<body>
+  <h1>{{title}}</h1>
+  <form action="/products/search" method="get">
+    <input type="text" name="q" placeholder="Поиск курсов..." required>
+    <button type="submit">Поиск</button>
+  </form>
+  
+  {{#if courses.length}}
+  <h2>Результаты поиска</h2> <!-- Обновленный текст заголовка -->
+    {{#each courses}}
+      <div class="course-item">
+        <h2 class="course-title">{{this.title}}</h2>
+        <p class="course-description">{{this.description}}</p>
+        <img class="course-image" src="{{this.img}}" alt="{{this.title}}">
+        <p class="course-price">Цена: {{this.price}}€</p>
+        <div class="course-details">
+          <a href="/products/{{this._id}}" class="btn-details">Подробнее</a> <!-- Обновленный текст кнопки -->
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>Курсы не найдены</p>
+  {{/if}}
+</body>
+</html>
+

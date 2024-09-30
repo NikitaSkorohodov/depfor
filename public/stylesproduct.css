@@ -1,0 +1,217 @@
+/* Общий стиль для body */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Контейнер для курса */
+  .course {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    background-color: #f8f9fa;
+  }
+  
+  /* Контейнер для изображения и описания */
+  .course-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px; /* Отступ между изображением и текстом */
+  }
+  
+  /* Изображение */
+  .course-content img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Блок с описанием */
+  .course-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  /* Заголовок курса */
+  .course-details h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  /* Цена курса */
+  .course-details .price {
+    font-size: 28px;
+    color: #f00;
+    margin-bottom: 20px;
+  }
+  
+  /* Описание курса */
+  .course-details p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Контейнер для кнопок */
+  .course-buttons {
+    display: flex;
+    gap: 10px; /* Отступ между кнопками */
+    margin-top: 20px;
+  }
+  
+  .course-buttons .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .btn i, .btn-large i, .btn-small i, .btn-floating i, .btn-large i, .btn-small i, .btn-flat i {
+    font-size: 2.3rem;
+    line-height: inherit;
+  }
+  .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
+    font-size: 34px;
+    outline: 0;
+  }
+  .btn:hover {
+    color: purple; /* Цвет текста при наведении */
+  }
+  .btn i:hover {
+    color: purple; /* Цвет значка при наведении */
+  }
+  
+  /* Комментарии */
+  .comments {
+    width: 100%;
+    max-width: 1200px;
+    text-align: left;
+    margin-top: 30px;
+  }
+  
+  /* Заголовок комментариев */
+  .comments h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  /* Список комментариев */
+  .comments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Элемент списка комментариев */
+  .comments li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .comments li:last-child {
+    border-bottom: none;
+  }
+  
+  .comments strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .comments em {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  /* Добавление комментария */
+  .add-comment {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .add-comment form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-comment label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .add-comment input,
+  .add-comment textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .add-comment button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .add-comment button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Медиазапросы для адаптации под мобильные устройства */
+  @media (max-width: 768px) {
+    .course-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    /* Изображение занимает 100% ширины на телефонах */
+    .course-content img {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .course-details {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .course-details h1 {
+      font-size: 28px;
+    }
+  
+    .course-details .price {
+      font-size: 22px;
+    }
+  
+    .course-details p {
+      font-size: 16px;
+    }
+  
+    .comments h2 {
+      font-size: 24px;
+    }
+  
+    .comments li {
+      font-size: 16px;
+    }
+  }
+  

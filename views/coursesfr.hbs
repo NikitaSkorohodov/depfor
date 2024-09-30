@@ -1,0 +1,30 @@
+{{#if courses.length}}
+  <div class="row">
+    {{#each courses}}
+      <div class="col s6">
+        <div class="card">
+          <div class="card-image">
+            <img src="{{img}}" alt="{{title}}">
+          </div>
+          <div class="card-content">
+            <span class="card-title">{{title}}</span>
+            <p class="price">{{price}}</p>
+          </div>
+          <div class="card-action actions">
+            <a href="/courses/{{id}}" target="_blank">Ouvrir le cours</a>
+            <a href="/courses/{{id}}/edit?allow=true">Modifier</a>
+            <form action="/card/add" method="POST">
+              <input type="hidden" name="id" value="{{id}}">
+              <button type="submit" class="btn btn-primary">Acheter</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {{#if @index_even}}
+        </div><div class="row">
+      {{/if}}
+    {{/each}}
+  </div>
+{{else}}
+  <p>Aucun cours pour le moment</p>
+{{/if}}

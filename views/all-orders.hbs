@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .order-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .course-item {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .delete-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{title}}</h1>
+
+    {{#if orders.length}}
+      <ul>
+        {{#each orders}}
+          <li class="order-item">
+            <form action="/orders/delete/{{_id}}" method="POST">
+              <button type="submit" class="delete-button">&times;</button>
+            </form>
+            <p>Заказ создан: {{date}}</p>
+            <p>Пользователь: {{user.username}}</p>
+            <p>Итоговая цена: {{totalPrice}} руб.</p>
+            <p>Точка выдачи: {{deliveryPoint}}</p> <!-- Добавляем отображение точки выдачи -->
+            <ul class="course-list">
+              {{#each courses}}
+                <li class="course-item">
+                  <p>Курс: {{this.title}}</p>
+                  <p>Цена: {{this.price}} руб.</p>
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>У вас пока нет заказов.</p>
+    {{/if}}
+  </div>
+</body>
+</html>

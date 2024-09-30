@@ -1,0 +1,105 @@
+ <style>
+    input:not([type]):focus:not([readonly]), 
+    input[type=text]:not(.browser-default):focus:not([readonly]), 
+    input[type=password]:not(.browser-default):focus:not([readonly]), 
+    input[type=email]:not(.browser-default):focus:not([readonly]), 
+    input[type=url]:not(.browser-default):focus:not([readonly]), 
+    input[type=time]:not(.browser-default):focus:not([readonly]), 
+    input[type=date]:not(.browser-default):focus:not([readonly]), 
+    input[type=datetime]:not(.browser-default):focus:not([readonly]), 
+    input[type=datetime-local]:not(.browser-default):focus:not([readonly]), 
+    input[type=tel]:not(.browser-default):focus:not([readonly]), 
+    input[type=number]:not(.browser-default):focus:not([readonly]), 
+    input[type=search]:not(.browser-default):focus:not([readonly]), 
+    textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 2px solid purple;
+        -webkit-box-shadow: 0 1px 0 0 purple;
+        box-shadow: 0 1px 0 0 purple;
+    }
+
+    input:not([type]):focus:not([readonly]) + label, 
+    input[type=text]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=password]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=email]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=url]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=time]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=date]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=datetime]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=tel]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=number]:not(.browser-default):focus:not([readonly]) + label, 
+    input[type=search]:not(.browser-default):focus:not([readonly]) + label, 
+    textarea.materialize-textarea:focus:not([readonly]) + label {
+        color: purple;
+    }
+  body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4; /* Цвет фона страницы */
+    }
+
+    form {
+      max-width: 400px;
+      margin: 80px auto 0; /* Верхний отступ увеличен до 80px */
+      background-color: #fff; /* Цвет фона формы */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Тень формы */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none; /* Убираем стандартные границы */
+      border-bottom: 2px solid #ddd; /* Начальная нижняя граница серого цвета */
+      border-radius: 0;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease; /* Плавный переход для цвета границы */
+    }
+
+    /* При фокусе нижняя граница становится цветом #5c0558 */
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none; /* Убираем стандартную обводку браузера */
+      border-bottom: 2px solid #5c0558; /* Цвет полосы при фокусе */
+    }
+
+    button {
+      background-color: #44025e; /* Цвет фона кнопки */
+      color: #fff; /* Цвет текста кнопки */
+      border: none;
+      padding: 15px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Плавный переход фона и эффект нажатия */
+    }
+
+    button:hover {
+      background-color: #44025e; /* Цвет фона кнопки при наведении */
+    }
+
+    button:active {
+      background-color: #000; /* Цвет фона кнопки при нажатии */
+      transform: scale(0.98); /* Легкое уменьшение кнопки при нажатии */
+    }
+  </style>
+<form action="/auth/register" method="post">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+  </div>
+  <button type="submit">Register</button>
+</form>

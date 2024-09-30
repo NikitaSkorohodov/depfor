@@ -1,0 +1,150 @@
+.nav-warapper{
+    padding: 0 2rem;
+}
+
+.price{
+    font-size: 2rem;
+}
+.course .price.big{
+    font-size: 2.5rem;
+}
+
+.card-action.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.course img{
+    max-width: 600px;
+    height: auto;
+}
+.course{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.nav2 {
+    color: #fff;
+    background-color: #44025e;
+    width: 100%;
+    height: 106px;
+    line-height: 106px;
+}
+.course-card {
+    width: 100%;
+    height: 100%; /* Принудительно установить высоту */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .course-card .card-image {
+    flex: 1; /* Занимать всю доступную высоту */
+  }
+  
+  .course-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохранить пропорции, обрезая изображение, чтобы оно полностью заполняло область */
+  }
+  .cols6 {
+    
+   height: 600px;
+    width: 300px;
+   
+}
+.card .card-title {
+  font-size: 17px;
+  font-weight: 300;
+}
+.card .card-image img {
+    height: 500px;
+    display: block;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    object-fit: cover;
+}
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .carousel {
+    display: flex;
+    overflow: hidden;
+  }
+  .carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 700px;
+    -webkit-perspective: 500px;
+    perspective: 500px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+}
+  .carousel-slide {
+    transform: translateX(200px);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Добавлено выравнивание по вертикали */
+  }
+  
+  .carousel-slide img {
+    max-width: 100%;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  
+  .prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-200%);
+    background-color: #fff;
+    color: #000;
+    font-size: 24px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    background-color:#ffffff;
+}
+
+
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+.circle-search{
+    margin-left: -70px;
+}
+.btn,.btn-large,.btn-small {
+  text-decoration: none;
+  color: #fff;
+  background-color: #44025e;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: background-color .2s ease-out;
+  transition: background-color .2s ease-out;
+  cursor: pointer
+}
+.btn:hover,.btn-large:hover,.btn-small:hover {
+  background-color: #ffeb3b
+}
+
+

@@ -1,0 +1,93 @@
+<style>
+
+    .navbar {
+        background-color: #009688;
+        color: #fff;
+        padding: 0px;
+        position: relative; 
+    }
+    
+    .navbar a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+ 
+    .navbar ul li {
+        padding-left: 20px; 
+    }
+
+    .navbar .burger-icon {
+        display: none; 
+        cursor: pointer;
+        position: absolute; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        left: 10px; 
+        width: 40px; 
+        height: 40px; 
+    }
+
+   
+    .navbar ul {
+        background-color: #44025e;
+    }
+
+    @media only screen and (max-width: 992px) {
+        .navbar ul {
+            display: none; 
+        }
+        .navbar .burger-icon {
+            display: block; 
+        }
+    }
+</style>
+
+
+<nav class="navbar" id="navbar">
+  
+    <div class="burger-icon" onclick="toggleMenu()">
+        <img src="https://img.icons8.com/?size=100&id=_qjQIc8Lbp9S&format=png&color=000000" alt="Burger Icon" style="width: 100%; height: 100%;">
+    </div>
+  
+    <ul id="navbarList">
+        <li>
+            <a href="http://localhost:3000/courses/search?q=JavaScript" class="circle-search" style="display: flex; margin-top: 30px; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png" alt="Search" style="width: 50px; height: 50px; border-radius: 50%;">
+            </a>
+        </li>
+        {{#if isHome}}
+        <li class="active"><a href="/">{{__ 'MAIN'}}</a></li>
+        {{else}}
+        <li><a href="/">{{__ 'MAIN'}}</a></li>
+        {{/if}}
+        {{#if isCourses}}
+        <li class="active"><a href="/courses">{{__ 'PRODUCTS'}}</a></li>
+        {{else}}
+        <li><a href="/courses">{{__ 'PRODUCTS'}}</a></li>
+        {{/if}}
+        {{#if isCard}}
+        <li class="active"><a href="/card">{{__ 'CARD'}}</a></li>
+        {{else}}
+        <li><a href="/card">{{__ 'CARD'}}</a></li>
+        {{/if}}
+ 
+        <li>
+            <a href="/?lang=en">English</a>
+        </li>
+        <li>
+            <a href="/?lang=ru">Russian</a>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    function toggleMenu() {
+        var navbarList = document.getElementById("navbarList");
+        navbarList.style.display === "none" ? navbarList.style.display = "block" : navbarList.style.display = "none";
+
+        var navbar = document.getElementById("navbar");
+        navbar.style.height === "56px" ? navbar.style.height = "126px" : navbar.style.height = "56px";
+    }
+</script>

@@ -1,0 +1,32 @@
+{{#if courses.length}}
+  <div class="row">
+    {{#each courses}}
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{img}}" alt="{{title}}">
+      </div>
+      <div class="card-content">
+        <span class="card-title">{{title}}</span>
+        <p class="price">{{price}}</p>
+      </div>
+      <div class="card-action actions">
+        <a href="/products/{{id}}" target="_blank">{{__ 'more details'}}</a>
+        <a href="/products/{{id}}/edit?allow=true">{{__ 'dit'}}</a>
+        <form action="/products/{{id}}/delete" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-danger">{{__ 'Delete'}}</button>
+        </form>
+        <form action="/card/add" method="POST" style="display: inline;">
+          <input type="hidden" name="id" value="{{id}}">
+          <button type="submit" class="btn btn-primary">{{__ 'Buy'}}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{{/each}}
+
+  </div>
+{{else}}
+  <p>{{__ 'This technology is not yet available'}}</p>
+{{/if}}
+

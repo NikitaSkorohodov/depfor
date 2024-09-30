@@ -1,0 +1,94 @@
+<style>
+/* Стили для ссылок на продукт */
+.product-link {
+  color: black; /* Чёрный цвет */
+  text-decoration: underline; /* Подчеркивание */
+  display: block;
+  white-space: nowrap; /* Не переносить текст */
+  overflow: hidden; /* Скрыть текст, выходящий за пределы блока */
+  text-overflow: ellipsis; /* Добавить многоточие */
+  width: 100%; /* Убедиться, что ширина блока установлена */
+  max-width: calc(24ch + 1em); /* Максимальная ширина для 21 символа плюс отступы */
+  font-size: 0.8rem;
+}
+
+/* Увеличенный размер кнопок */
+.large-button {
+  padding: 20px 30px; /* Увеличиваем отступы для большего размера кнопки */
+  font-size: 5.2rem; /* Увеличиваем шрифт */
+}
+.btn i, .btn-large i, .btn-small i, .btn-floating i, .btn-large i, .btn-small i, .btn-flat i {
+  font-size: 2.3rem;
+  line-height: inherit;
+}
+.btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
+  font-size: 34px;
+  outline: 0;
+}
+.btn:hover {
+  color: purple; /* Цвет текста при наведении */
+}
+.btn i:hover {
+  color: purple; /* Цвет значка при наведении */
+}
+.card {
+  max-width: 350px; /* Устанавливаем максимальную ширину карточки */
+  margin: 20px; /* Центрируем карточки по горизонтали */
+}
+.card .card-image img {
+  height: 250px;
+  display: block;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+</style>
+
+
+
+{{#if courses.length}}
+  <div class="row">
+    {{#each courses}}
+      <div class="col s12 m3"> <!-- на маленьких экранах один элемент в строке, на средних - по два -->
+        <div class="card">
+          <div class="card-image">
+            <img src="{{img}}" alt="{{title}}">
+          </div>
+          <div class="card-content">
+            <!-- Сделаем название товара ссылкой с черным цветом и подчеркиванием -->
+            <a href="/products/{{id}}" target="_blank" class="card-title product-link">{{title}}</a>
+            <p class="price">{{price}}</p>
+          </div>
+          <div class="card-action actions">
+            <!-- Ссылка "More details" -->
+            
+            
+            <!-- Кнопка добавления в корзину -->
+            <form action="/card/add" method="POST" style="display:inline;">
+              <input type="hidden" name="id" value="{{id}}">
+              <button type="submit" class="btn btn-primary"><i class="material-icons">shopping_cart</i></button>
+            </form>
+
+            <!-- Кнопка добавления в избранное -->
+            <form action="/favorites/add" method="POST">
+              <input type="hidden" name="courseId" value="{{id}}">
+              <button type="submit" class="btn btn-secondary"><i class="material-icons">favorite</i>
+</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <p>{{__ 'This technology is not yet available'}}</p>
+{{/if}}
+
+

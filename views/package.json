@@ -1,0 +1,32 @@
+{
+  "name": "new-folder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.1"
+  },
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "express": "^4.17.17",
+    "express-handlebars": "^6.0.1",
+    "mongoose": "^6.1.5",
+    "node-fetch": "^3.3.2",
+    "uuid": "^8.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikitaSkorohodov/expressProject.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/NikitaSkorohodov/expressProject/issues"
+  },
+  "homepage": "https://github.com/NikitaSkorohodov/expressProject#readme"
+}
