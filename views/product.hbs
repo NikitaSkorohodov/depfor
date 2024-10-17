@@ -25,6 +25,17 @@
         <input type="hidden" name="courseId" value="{{course.id}}">
         <button type="submit" class="btn btn-secondary"><i class="material-icons">favorite</i> {{__ 'add to favorite'}}</button>
       </form>
+      {{#if (eq user.role 'admin')}}
+    <a href="/products/{{course.id}}/edit?allow=true" class="btn btn-edit">
+      <i class="material-icons">edit</i> {{__ 'edit'}}
+    </a>
+    <form action="/products/{{course.id}}/delete" method="POST" style="display: inline;">
+      <button type="submit" class="btn btn-danger">{{__ 'Delete'}}</button>
+    </form>
+
+  {{/if}}
+</form>
+
     </div>
     <div class="comments">
       <h2>Комментарии</h2>
