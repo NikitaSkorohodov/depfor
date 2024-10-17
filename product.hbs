@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{course.title}}</title>
+</head>
+<body>
+  <div class="course">
+    <div class="course-content">
+      <img src="{{course.img}}" alt="{{course.title}}">
+      
+      <div class="course-details">
+        <h1>{{course.title}}</h1>
+        <p class="price">{{course.price}}</p>
+        <p>{{course.description}}</p>
+      </div>
+    </div>
+    <div class="course-buttons">
+      <form id="addToCartForm" action="/card/add" method="POST">
+        <input type="hidden" name="id" value="{{course.id}}">
+        <button type="submit" class="btn btn-primary"><i class="material-icons">shopping_cart</i> {{__ 'add to cart'}}</button>
+      </form>
+      <form action="/favorites/add" method="POST">
+        <input type="hidden" name="courseId" value="{{course.id}}">
+        <button type="submit" class="btn btn-secondary"><i class="material-icons">favorite</i> {{__ 'add to favorite'}}</button>
+      </form>
+      {{#if (eq user.role 'admin')}}
+    <a href="/products/{{course.id}}/edit?allow=true" class="btn btn-edit">
+      <i class="material-icons">edit</i> {{__ 'edit'}}
+    </a>
+    <form action="/products/{{course.id}}/delete" method="POST" style="display: inline;">
+      <button type="submit" class="btn btn-danger">{{__ 'Delete'}}</button>
+    </form>
+
+  {{/if}}
+</form>
+
+    </div>
+    <div class="comments">
+      <h2>Комментарии</h2>
+      <ul>
+        {{#each course.comments}}
+          <li>
+            <strong>{{this.user}}</strong>
+            <span>{{this.text}}</span>
+            <em>{{this.date}}</em>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="add-comment">
+      <h3>Добавить комментарий</h3>
+      {{#if user}}
+      <form id="commentForm">
+        <input type="hidden" id="user" name="user" value="{{user.username}}">
+        <label for="text">Комментарий:</label>
+        <textarea id="text" name="text" required></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+      {{else}}
+      <p>Пожалуйста, <a href="/auth/login">войдите</a>, чтобы оставить комментарий.</p>
+      {{/if}}
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('#commentForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const user = document.querySelector('#user').value;
+      const text = document.querySelector('#text').value;
+      const courseId = '{{course.id}}';
+
+      try {
+        const response = await fetch(`/products/${courseId}/comments`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ user, text })
+        });
+
+        if (response.ok) {
+          const newComment = await response.json();
+          const commentList = document.querySelector('.comments ul');
+          const newCommentElement = document.createElement('li');
+          newCommentElement.innerHTML = `
+            <strong>${newComment.user}</strong>
+            <span>${newComment.text}</span>
+            <em>${newComment.date}</em>
+          `;
+          commentList.appendChild(newCommentElement);
+
+          document.querySelector('#text').value = '';
+        } else {
+          console.error('Failed to add comment');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>
